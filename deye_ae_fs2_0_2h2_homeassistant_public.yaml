@@ -1,0 +1,333 @@
+# Deye AE-FS2.0-2H2 - Home Assistant native Modbus integration
+# Read-only sensors. No private addresses, logger IDs or credentials.
+# Add this block to configuration.yaml (or merge under existing modbus:).
+# Requires deye_modbus_host in secrets.yaml. Adjust slave and port to your setup.
+# Addresses are zero-based FC03 holding registers.
+modbus:
+  - name: deye_ae_fs2_0_2h2
+    type: tcp
+    host: !secret deye_modbus_host
+    port: 502
+    timeout: 5
+    sensors:
+      - name: "Deye Bms Charge Voltage"
+        unique_id: deye_ae_fs2_0_2h2_bms_charge_voltage
+        address: 372
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.01
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Bms Charge Current Limit"
+        unique_id: deye_ae_fs2_0_2h2_bms_charge_current_limit
+        address: 374
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "A"
+        state_class: measurement
+        device_class: current
+      - name: "Deye Bms Discharge Current Limit"
+        unique_id: deye_ae_fs2_0_2h2_bms_discharge_current_limit
+        address: 375
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "A"
+        state_class: measurement
+        device_class: current
+      - name: "Deye Bms Soc"
+        unique_id: deye_ae_fs2_0_2h2_bms_soc
+        address: 376
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "%"
+        state_class: measurement
+      - name: "Deye Bms Voltage"
+        unique_id: deye_ae_fs2_0_2h2_bms_voltage
+        address: 377
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.01
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Bms Current"
+        unique_id: deye_ae_fs2_0_2h2_bms_current
+        address: 378
+        input_type: holding
+        slave: 1
+        data_type: int16
+        scan_interval: 10
+        unit_of_measurement: "A"
+        state_class: measurement
+        device_class: current
+      - name: "Deye Bms Temperature"
+        unique_id: deye_ae_fs2_0_2h2_bms_temperature
+        address: 379
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "°C"
+        state_class: measurement
+        device_class: temperature
+      - name: "Deye Bms Nominal Capacity"
+        unique_id: deye_ae_fs2_0_2h2_bms_nominal_capacity
+        address: 407
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "Ah"
+        state_class: measurement
+      - name: "Deye Bms Max Cell Voltage"
+        unique_id: deye_ae_fs2_0_2h2_bms_max_cell_voltage
+        address: 408
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.001
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Bms Min Cell Voltage"
+        unique_id: deye_ae_fs2_0_2h2_bms_min_cell_voltage
+        address: 409
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.001
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Bms Max Cell Temperature"
+        unique_id: deye_ae_fs2_0_2h2_bms_max_cell_temperature
+        address: 410
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "°C"
+        state_class: measurement
+        device_class: temperature
+      - name: "Deye Bms Min Cell Temperature"
+        unique_id: deye_ae_fs2_0_2h2_bms_min_cell_temperature
+        address: 411
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "°C"
+        state_class: measurement
+        device_class: temperature
+      - name: "Deye Bms Operating Batteries"
+        unique_id: deye_ae_fs2_0_2h2_bms_operating_batteries
+        address: 412
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+      - name: "Deye Bms Parallel Modules"
+        unique_id: deye_ae_fs2_0_2h2_bms_parallel_modules
+        address: 413
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+      - name: "Deye Total Production Energy"
+        unique_id: deye_ae_fs2_0_2h2_total_production_energy
+        address: 1005
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total_increasing
+      - name: "Deye Grid Voltage"
+        unique_id: deye_ae_fs2_0_2h2_grid_voltage
+        address: 1034
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Ac Frequency"
+        unique_id: deye_ae_fs2_0_2h2_ac_frequency
+        address: 1035
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.01
+        unit_of_measurement: "Hz"
+        state_class: measurement
+        device_class: frequency
+      - name: "Deye Ac Voltage"
+        unique_id: deye_ae_fs2_0_2h2_ac_voltage
+        address: 1036
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Pv2 Voltage"
+        unique_id: deye_ae_fs2_0_2h2_pv2_voltage
+        address: 1053
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Battery Voltage"
+        unique_id: deye_ae_fs2_0_2h2_battery_voltage
+        address: 1067
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.01
+        unit_of_measurement: "V"
+        state_class: measurement
+        device_class: voltage
+      - name: "Deye Battery Current"
+        unique_id: deye_ae_fs2_0_2h2_battery_current
+        address: 1068
+        input_type: holding
+        slave: 1
+        data_type: int16
+        scan_interval: 10
+        scale: 0.01
+        unit_of_measurement: "A"
+        state_class: measurement
+        device_class: current
+      - name: "Deye Battery Soc"
+        unique_id: deye_ae_fs2_0_2h2_battery_soc
+        address: 1069
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "%"
+        state_class: measurement
+      - name: "Deye Battery Temperature"
+        unique_id: deye_ae_fs2_0_2h2_battery_temperature
+        address: 1070
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "°C"
+        state_class: measurement
+        device_class: temperature
+      - name: "Deye Battery Power"
+        unique_id: deye_ae_fs2_0_2h2_battery_power
+        address: 1071
+        input_type: holding
+        slave: 1
+        data_type: int16
+        scan_interval: 10
+        unit_of_measurement: "W"
+        state_class: measurement
+        device_class: power
+      - name: "Deye Battery Total Discharge Energy"
+        unique_id: deye_ae_fs2_0_2h2_battery_total_discharge_energy
+        address: 1074
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total_increasing
+      - name: "Deye Battery Total Charge Energy"
+        unique_id: deye_ae_fs2_0_2h2_battery_total_charge_energy
+        address: 1076
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total_increasing
+      - name: "Deye Grid Power"
+        unique_id: deye_ae_fs2_0_2h2_grid_power
+        address: 1080
+        input_type: holding
+        slave: 1
+        data_type: int16
+        scan_interval: 10
+        unit_of_measurement: "W"
+        state_class: measurement
+        device_class: power
+      - name: "Deye Home Load Power"
+        unique_id: deye_ae_fs2_0_2h2_home_load_power
+        address: 1084
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "W"
+        state_class: measurement
+        device_class: power
+      - name: "Deye Total Grid Purchase Energy"
+        unique_id: deye_ae_fs2_0_2h2_total_grid_purchase_energy
+        address: 1091
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total_increasing
+      - name: "Deye Home Load Daily Energy"
+        unique_id: deye_ae_fs2_0_2h2_home_load_daily_energy
+        address: 1095
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        state_class: total
+      - name: "Deye Home Load Total Energy"
+        unique_id: deye_ae_fs2_0_2h2_home_load_total_energy
+        address: 1096
+        input_type: holding
+        slave: 1
+        data_type: uint16
+        scan_interval: 10
+        scale: 0.1
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total_increasing
