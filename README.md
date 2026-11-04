@@ -17,7 +17,7 @@ The file targets **native Home Assistant Modbus**, not the custom Solarman integ
 - No register writes or inverter configuration controls are included.
 - All addresses/scales are derived from field observations, not official manufacturer documentation.
 
-# Deye AE-FS2.0-2H2 — Modbus Register Map, Monitoring and Configuration
+# Deye AE-FS2.0-2H2 — Modbus Register Map, Monitoring and Configuration XLS file
 
 ## Overview
 
